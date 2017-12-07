@@ -1,12 +1,15 @@
 <template>
   <div>
-    <ul class="favorites__list">
-      <li class="favorites__item" v-for="(colour, index) in colours" v-bind:style="{ background: colour }"></li>
+    <ul class="favorite__list">
+      <favorite colour="0000ff" />
+      <!-- <li class="favorite__item" v-for="(colour, index) in colours" v-bind:style="{ background: colour }"></li> -->
     </ul>
   </div>
 </template>
 
 <script>
+import Favorite from './Favorite';
+
 export default {
   name: 'Favorites',
   data() {
@@ -25,18 +28,11 @@ export default {
 </script>
 
 <style lang="scss">
-  .favorites__list {
+  .favorite__list {
     display: flex;
     margin: 0;
     padding: 0;
     list-style-type: none;
     flex-wrap: wrap;
-  }
-
-  .favorites__item {
-    display: block;
-    padding-top: 33%;
-    flex-basis: 33%;
-    flex-shrink: 0;
   }
 </style>
