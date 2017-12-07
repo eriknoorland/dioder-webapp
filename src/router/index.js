@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@/components/Home';
-import Favorites from '@/components/Favorites';
+import favorites from '@/components/favorites';
 import Options from '@/components/Options';
 
 Vue.use(Router);
@@ -16,7 +16,7 @@ export default new Router({
     {
       path: '/favorites',
       name: 'Favorites',
-      component: Favorites,
+      component: favorites,
     },
     {
       path: '/options',

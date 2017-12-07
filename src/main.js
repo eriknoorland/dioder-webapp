@@ -6,7 +6,7 @@ import App from './App';
 import store from './store';
 import router from './router';
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = process.env.NODE_ENV === 'production';
 
 /* eslint-disable no-new */
 new Vue({

@@ -1,27 +1,12 @@
-const actions = {
-  fetchFavorites() {
-    return new Promise((resolve) => {
-      resolve({
-        data: [
-          '#ff0000',
-          '#ffff00',
-          '#ffffff',
-          '#00ff00',
-          '#00ffff',
-          '#0000ff',
-        ],
-      });
-    });
-  },
+import http from '../../../http';
 
-  toggleFavorite(context, toggle) {
-    return new Promise((resolve) => {
-      resolve({
-        data: {
-          toggle,
-        },
+const actions = {
+  fetchFavorites(context) {
+    http
+      .get('/v1/favorites')
+      .then((response) => {
+        context.commit('fetchFavorites', { favorites: response.data });
       });
-    });
   },
 };
 

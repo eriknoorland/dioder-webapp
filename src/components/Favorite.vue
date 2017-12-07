@@ -1,5 +1,5 @@
 <template>
-  <li class="favorite" v-bind:style="{ background: colour }">
+  <li class="favorite" :style="{ background: colour }" v-on:click="onClick">
 
   </li>
 </template>
@@ -10,16 +10,21 @@
 export default {
   name: 'Favorites',
   props: [
-    'colour'
+    'colour',
   ],
+  methods: {
+    onClick() {
+      this.$emit('favoriteClick', this.colour);
+    },
+  },
 };
 </script>
 
 <style lang="scss">
-  .favorite__item {
+  .favorite {
     display: block;
-    padding-top: 33%;
-    flex-basis: 33%;
+    padding-top: 33.33%;
+    flex-basis: 33.33%;
     flex-shrink: 0;
   }
 </style>

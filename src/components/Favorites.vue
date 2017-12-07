@@ -1,28 +1,35 @@
 <template>
   <div>
     <ul class="favorite__list">
-      <favorite colour="0000ff" />
-      <!-- <li class="favorite__item" v-for="(colour, index) in colours" v-bind:style="{ background: colour }"></li> -->
+      <favorite 
+        v-for="(colour, index) in colours" 
+        :key="index" 
+        :colour="colour" 
+        @favoriteClick="onFavoriteColourClick" />
     </ul>
   </div>
 </template>
 
 <script>
-import Favorite from './Favorite';
+import favorite from './favorite';
 
 export default {
   name: 'Favorites',
-  data() {
-    return {
-      colours: [],
-    };
+  computed: {
+    colours() {
+      return this.$store.state.favorites.favorites;
+    },
+  },
+  components: {
+    favorite,
+  },
+  methods: {
+    onFavoriteColourClick(colour) {
+      this.$store.dispatch('changeColour', colour);
+    },
   },
   mounted() {
-    this.$store
-      .dispatch('fetchFavorites')
-      .then((response) => {
-        this.colours = response.data;
-      });
+    this.$store.dispatch('fetchFavorites');
   },
 };
 </script>
